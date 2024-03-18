@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
