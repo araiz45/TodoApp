@@ -1,10 +1,14 @@
 "use client";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { push } = useRouter();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(username, password);
@@ -22,9 +26,15 @@ export default function Register() {
         console.log("good");
         setPassword("");
         setUsername("");
+        push("/dashboard");
+      } else if (response.status === 400) {
+        toast.error("User already Exist");
+      } else {
+        console.log("another bad");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log("bad");
+      toast.error("Some error occrued");
     }
   };
   return (
