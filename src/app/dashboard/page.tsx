@@ -54,7 +54,7 @@ export default function DashboardPage() {
       <div className="min-h-screen px-20">
         <h2 className="text-2xl text-center mt-20 font-bold">Your Notes</h2>
         {dataArr?.map((entity) => (
-          <NotesComp entity={entity} />
+          <NotesComp entity={entity} getValue={getValue} />
         ))}
       </div>
     </section>

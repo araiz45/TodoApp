@@ -46,3 +46,28 @@ export async function GET(req: { json: () => any }) {
     return NextResponse.json({ message: "bad" }, { status: 500 });
   }
 }
+
+export async function DELETE(req: { json: () => any }) {
+  const { id } = await req.json();
+  try {
+    if (id) {
+      const note = await Note.findByIdAndDelete(id);
+      console.log(note);
+      return NextResponse.json({ message: "loving" });
+    }
+  } catch (error) {
+    return NextResponse.json({ message: "error" }, { status: 500 });
+  }
+  //   return NextResponse.json({ message: "done" });
+}
+
+export async function PUT(req: { json: () => any }) {
+  const { note, desc, id } = await req.json();
+  try {
+    const updateNote = await Note.findByIdAndUpdate(id, { note, desc });
+    console.log(updateNote);
+    return NextResponse.json({ message: "done" });
+  } catch (error) {
+    return NextResponse.json({ message: "done" }, { status: 500 });
+  }
+}
