@@ -1,11 +1,11 @@
 import mongoDB from "@/db/db";
 import Note from "@/models/Notes";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 mongoDB();
-export async function POST(req: { json: () => any }) {
+export async function POST(req: NextRequest) {
   try {
     const { title, userId, desc } = await req.json();
     console.log(title, userId, desc);
@@ -20,7 +20,7 @@ export async function POST(req: { json: () => any }) {
   } catch (error) {}
 }
 
-export async function GET(req: { json: () => any }) {
+export async function GET(req: NextRequest) {
   const secret = process.env.JWTSECRET || "LSDJF;SDLFJ";
   try {
     const cookieStore = cookies();
@@ -47,7 +47,7 @@ export async function GET(req: { json: () => any }) {
   }
 }
 
-export async function DELETE(req: { json: () => any }) {
+export async function DELETE(req: NextRequest) {
   const { id } = await req.json();
   try {
     if (id) {
@@ -61,7 +61,7 @@ export async function DELETE(req: { json: () => any }) {
   //   return NextResponse.json({ message: "done" });
 }
 
-export async function PUT(req: { json: () => any }) {
+export async function PUT(req: NextRequest) {
   const { note, desc, id } = await req.json();
   try {
     const updateNote = await Note.findByIdAndUpdate(id, { note, desc });

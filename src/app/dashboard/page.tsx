@@ -61,8 +61,8 @@ export default function DashboardPage() {
           </span>{" "}
           👋 ,Here Is Your Notes
         </h2>
-        {dataArr?.map((entity) => (
-          <NotesComp entity={entity} getValue={getValue} />
+        {dataArr?.map((entity, index) => (
+          <NotesComp entity={entity} getValue={getValue} key={index} />
         ))}
       </div>
     </section>

@@ -1,12 +1,12 @@
 "use server";
 import mongoDB from "@/db/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 mongoDB();
-export async function POST(req: { json: () => any }) {
+export async function POST(req: NextRequest) {
   const secret = process.env.JWTSECRET || "LSDJF;SDLFJ";
   try {
     const { username, password } = await req.json();

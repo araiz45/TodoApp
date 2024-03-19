@@ -17,7 +17,7 @@ export default function Login() {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
       });
       console.log(response);
@@ -65,7 +65,7 @@ export default function Login() {
           Login
         </button>
         <p>
-          Don't have an account{" "}
+          Don&apos;t have an account{" "}
           <Link href={"/register"} className="underline text-rose-700">
             Register
           </Link>
