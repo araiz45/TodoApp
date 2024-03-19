@@ -25,7 +25,7 @@ export default function NotesComp({ entity, getValue }: entityInter) {
       id: entity._id,
     };
     try {
-      const response = await fetch(process.env.serverUrl + "/note", {
+      const response = await fetch("/api/note", {
         method: "DELETE",
         body: JSON.stringify(data),
         headers: {

@@ -22,7 +22,7 @@ export default function DashboardPage() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(process.env.serverUrl + "/dashboard");
+        const response = await fetch("/api/dashboard");
         const { name, id } = await response.json();
         console.log(name, id);
         setUsername(name);
@@ -40,7 +40,7 @@ export default function DashboardPage() {
     })();
   }, []);
   const getValue = async () => {
-    const res = await fetch(process.env.serverUrl + "/note", {
+    const res = await fetch("/api/note", {
       method: "GET",
     });
     const { data } = await res.json();

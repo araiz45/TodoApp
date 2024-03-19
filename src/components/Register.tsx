@@ -13,7 +13,7 @@ export default function Register() {
     console.log(username, password);
     const submitData = { username, password };
     try {
-      const response = await fetch(process.env.serverUrl + "/register", {
+      const response = await fetch("/api/register", {
         method: "POST",
         body: JSON.stringify(submitData),
         headers: {

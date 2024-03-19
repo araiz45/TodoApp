@@ -7,7 +7,7 @@ export default function LogoutButton() {
   ) => {
     ev.preventDefault();
     try {
-      const response = await fetch(process.env.serverUrl + "/logout");
+      const response = await fetch("/api/logout");
       console.log(response);
       push("/login");
       toast.success("Logout has been successfull");

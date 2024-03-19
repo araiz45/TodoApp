@@ -19,7 +19,7 @@ export default function Form({ id, username, getValue }: getProp) {
       userId: id,
     };
     try {
-      const response = await fetch(process.env.serverUrl + "/note", {
+      const response = await fetch("/api/note", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

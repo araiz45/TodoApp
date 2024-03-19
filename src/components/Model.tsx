@@ -25,7 +25,7 @@ export default function Model({ entity, getValue, undoModel }: entityInter) {
       id: entity._id,
     };
     try {
-      const response = await fetch(process.env.serverUrl + "/note", {
+      const response = await fetch("/api/note", {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {

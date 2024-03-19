@@ -13,7 +13,7 @@ export default function Login() {
       password,
     };
     try {
-      const response = await fetch(process.env.serverUrl + "/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
