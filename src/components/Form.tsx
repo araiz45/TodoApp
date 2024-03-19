@@ -4,8 +4,9 @@ import { toast } from "react-toastify";
 interface getProp {
   id: string;
   username: string;
+  getValue: () => void;
 }
-export default function Form({ id, username }: getProp) {
+export default function Form({ id, username, getValue }: getProp) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
@@ -29,6 +30,7 @@ export default function Form({ id, username }: getProp) {
         setTitle("");
         setDesc("");
         toast.success("Note has been added successfully");
+        getValue();
       }
     } catch (error) {}
   };

@@ -2,18 +2,22 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Form from "@/components/Form";
+import NotesComp from "@/components/Notes";
 
 interface gettingDataInterface {
   _id: string;
   note: string;
   desc: string;
   userId: string;
+  createdAt: string;
 }
 export default function DashboardPage() {
   const { push } = useRouter();
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
   const [dataArr, setDataArr] = useState<gettingDataInterface[]>();
+  const [isActive, setIsActive] = useState(false);
+
   useEffect(() => {
     (async () => {
       try {
@@ -34,26 +38,23 @@ export default function DashboardPage() {
       }
     })();
   }, []);
-
+  const getValue = async () => {
+    const res = await fetch(process.env.serverUrl + "/note", {
+      method: "GET",
+    });
+    const { data } = await res.json();
+    setDataArr(data);
+  };
   useEffect(() => {
-    (async () => {
-      const res = await fetch(process.env.serverUrl + "/note", {
-        method: "GET",
-      });
-      const { data } = await res.json();
-      setDataArr(data);
-    })();
+    getValue();
   }, []);
   return (
     <section className="min-h-screen bg-gray-300">
-      <Form id={id} username={username} />
+      <Form id={id} username={username} getValue={getValue} />
       <div className="min-h-screen px-20">
         <h2 className="text-2xl text-center mt-20 font-bold">Your Notes</h2>
         {dataArr?.map((entity) => (
-          <div className="text-black bg-white my-5 rounded-lg">
-            <div className="">Title: {entity.note}</div>
-            <div className="text-gray-400">Description: {entity.desc}</div>
-          </div>
+          <NotesComp entity={entity} />
         ))}
       </div>
     </section>
