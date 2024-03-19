@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import LogoutButton from "./Logout";
 
 interface getProp {
   id: string;

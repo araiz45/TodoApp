@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Form from "@/components/Form";
 import NotesComp from "@/components/Notes";
+import LogoutButton from "@/components/Logout";
 
 interface gettingDataInterface {
   _id: string;
@@ -50,9 +51,16 @@ export default function DashboardPage() {
   }, []);
   return (
     <section className="min-h-screen bg-gray-300">
+      <LogoutButton />
       <Form id={id} username={username} getValue={getValue} />
-      <div className="min-h-screen px-20">
-        <h2 className="text-2xl text-center mt-20 font-bold">Your Notes</h2>
+      <div className="min-h-72 px-20 py-16">
+        <h2 className="text-2xl text-center mt-20 font-bold">
+          Hi{" "}
+          <span className="bg-rose-700 py-2 px-1 rounded-lg text-white">
+            {username}
+          </span>{" "}
+          👋 ,Here Is Your Notes
+        </h2>
         {dataArr?.map((entity) => (
           <NotesComp entity={entity} getValue={getValue} />
         ))}
