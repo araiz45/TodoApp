@@ -56,7 +56,7 @@ export default function DashboardPage() {
       <div className="min-h-72 px-20 py-16">
         <h2 className="text-2xl text-center mt-20 font-bold">
           Hi{" "}
-          <span className="bg-rose-700 py-2 px-1 rounded-lg text-white">
+          <span className="bg-rose-700 py-2 px-1 rounded-lg text-white form-heading">
             {username}
           </span>{" "}
           👋 ,Here Is Your Notes

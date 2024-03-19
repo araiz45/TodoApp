@@ -51,7 +51,7 @@ export default function NotesComp({ entity, getValue }: entityInter) {
         className="bg-white my-5 rounded-lg p-3"
         onClick={() => setIsActive(!isActive)}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between note-point">
           <h3 className="font-semibold">{entity.note}</h3>
           <div className="flex items-center gap-2 text-gray-700">
             <span className="text-sm text-gray-700">

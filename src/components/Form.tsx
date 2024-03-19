@@ -38,7 +38,10 @@ export default function Form({ id, username, getValue }: getProp) {
   return (
     <div className="flex justify-center items-center flex-col py-3">
       <h2 className="text-2xl font-bold">Add a Note</h2>
-      <form className="flex flex-col w-96 gap-2 " onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col w-96 gap-2 formform"
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="title" className="">
           Enter Title
         </label>

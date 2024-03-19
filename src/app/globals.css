@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media only screen and (max-width: 600px) {
+  .button-between {
+    flex-direction: column;
+    align-items: start;
+    width: auto;
+  }
+  .page-heading {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .formform {
+    width: auto;
+  }
+  .form-heading {
+    line-height: 3rem;
+  }
+  .note-point {
+    flex-direction: column;
+  }
+}
